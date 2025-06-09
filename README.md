@@ -8,7 +8,7 @@
 # 💰 Ứng dụng Quản lý Chi tiêu Cá nhân - Nâng tầm tài chính của bạn 💹
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=500&size=40&pause=1000&color=2E8B57&center=true&vCenter=true&width=600&height=100&lines=Quản+lý+chi+tiêu+thông+minh;Theo+dõi+thu+chi+hiệu+quả;Đạt+mục+tiêu+tài+chính" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=500&size=40&pause=1000&color=2E8B57&center=true&vCenter=true&width=900&height=100&lines=Quản+lý+chi+tiêu+thông+minh;Theo+dõi+thu+chi+hiệu+quả;Đạt+mục+tiêu+tài+chính" alt="Typing SVG" />
 </div>
 
 ## 🚀 Giới thiệu
