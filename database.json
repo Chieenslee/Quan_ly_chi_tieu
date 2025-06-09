@@ -1,0 +1,450 @@
+{
+    "transactions": {
+        "income": [
+            {
+                "date": "2025-03-01",
+                "amount": 7500000.0,
+                "category": "Lương",
+                "description": "Lương tháng 3"
+            },
+            {
+                "date": "2025-03-15",
+                "amount": 1500000.0,
+                "category": "Thưởng",
+                "description": "Thưởng dự án"
+            },
+            {
+                "date": "2025-03-20",
+                "amount": 1200000.0,
+                "category": "Đầu tư",
+                "description": "Lãi cổ phiếu"
+            },
+            {
+                "date": "2025-03-25",
+                "amount": 400000.0,
+                "category": "Khác",
+                "description": "Tiền thưởng từ khảo sát"
+            },
+            {
+                "date": "2025-04-15",
+                "amount": 1800000.0,
+                "category": "Thưởng",
+                "description": "Thưởng doanh số"
+            },
+            {
+                "date": "2025-04-20",
+                "amount": 1400000.0,
+                "category": "Đầu tư",
+                "description": "Lãi chứng khoán"
+            },
+            {
+                "date": "2025-04-25",
+                "amount": 600000.0,
+                "category": "Khác",
+                "description": "Tiền hoàn trả"
+            },
+            {
+                "date": "2025-05-01",
+                "amount": 8000000.0,
+                "category": "Lương",
+                "description": "Lương tháng 5"
+            },
+            {
+                "date": "2025-05-15",
+                "amount": 2000000.0,
+                "category": "Thưởng",
+                "description": "Thưởng thành tích"
+            },
+            {
+                "date": "2025-06-08",
+                "amount": 7500000.0,
+                "category": "Lương",
+                "description": "Lương tháng 3"
+            },
+            {
+                "date": "2025-06-09",
+                "amount": 8000000.0,
+                "category": "Lương",
+                "description": "Lương tháng 5"
+            },
+            {
+                "date": "2025-06-09",
+                "amount": 8000000.0,
+                "category": "Lương",
+                "description": "Lương tháng 5"
+            },
+            {
+                "date": "2025-06-09",
+                "amount": 8000000.0,
+                "category": "Lương",
+                "description": "Lương tháng 5"
+            }
+        ],
+        "expenses": [
+            {
+                "date": "2025-03-02",
+                "amount": 150000.0,
+                "category": "Ăn uống",
+                "description": "Ăn trưa văn phòng"
+            },
+            {
+                "date": "2025-03-03",
+                "amount": 200000.0,
+                "category": "Di chuyển",
+                "description": "Tiền xăng xe"
+            },
+            {
+                "date": "2025-03-04",
+                "amount": 300000.0,
+                "category": "Mua sắm",
+                "description": "Mua quần áo"
+            },
+            {
+                "date": "2025-03-05",
+                "amount": 250000.0,
+                "category": "Giải trí",
+                "description": "Xem phim"
+            },
+            {
+                "date": "2025-03-06",
+                "amount": 180000.0,
+                "category": "Ăn uống",
+                "description": "Ăn tối nhà hàng"
+            },
+            {
+                "date": "2025-03-07",
+                "amount": 150000.0,
+                "category": "Di chuyển",
+                "description": "Grab đi làm"
+            },
+            {
+                "date": "2025-03-08",
+                "amount": 400000.0,
+                "category": "Mua sắm",
+                "description": "Mua đồ điện tử"
+            },
+            {
+                "date": "2025-03-09",
+                "amount": 200000.0,
+                "category": "Giải trí",
+                "description": "Cà phê với bạn"
+            },
+            {
+                "date": "2025-03-10",
+                "amount": 120000.0,
+                "category": "Ăn uống",
+                "description": "Ăn sáng"
+            },
+            {
+                "date": "2025-03-11",
+                "amount": 180000.0,
+                "category": "Di chuyển",
+                "description": "Taxi đi họp"
+            },
+            {
+                "date": "2025-03-12",
+                "amount": 350000.0,
+                "category": "Mua sắm",
+                "description": "Mua đồ gia dụng"
+            },
+            {
+                "date": "2025-03-13",
+                "amount": 280000.0,
+                "category": "Giải trí",
+                "description": "Karaoke"
+            },
+            {
+                "date": "2025-03-14",
+                "amount": 160000.0,
+                "category": "Ăn uống",
+                "description": "Ăn trưa"
+            },
+            {
+                "date": "2025-03-15",
+                "amount": 220000.0,
+                "category": "Di chuyển",
+                "description": "Xăng xe"
+            },
+            {
+                "date": "2025-03-16",
+                "amount": 450000.0,
+                "category": "Mua sắm",
+                "description": "Mua quà sinh nhật"
+            },
+            {
+                "date": "2025-03-17",
+                "amount": 300000.0,
+                "category": "Giải trí",
+                "description": "Bowling"
+            },
+            {
+                "date": "2025-03-18",
+                "amount": 140000.0,
+                "category": "Ăn uống",
+                "description": "Ăn tối"
+            },
+            {
+                "date": "2025-03-19",
+                "amount": 190000.0,
+                "category": "Di chuyển",
+                "description": "Grab về nhà"
+            },
+            {
+                "date": "2025-03-20",
+                "amount": 380000.0,
+                "category": "Mua sắm",
+                "description": "Mua đồ thể thao"
+            },
+            {
+                "date": "2025-03-21",
+                "amount": 260000.0,
+                "category": "Giải trí",
+                "description": "Xem phim"
+            },
+            {
+                "date": "2025-03-22",
+                "amount": 170000.0,
+                "category": "Ăn uống",
+                "description": "Ăn trưa"
+            },
+            {
+                "date": "2025-03-23",
+                "amount": 210000.0,
+                "category": "Di chuyển",
+                "description": "Xăng xe"
+            },
+            {
+                "date": "2025-03-24",
+                "amount": 420000.0,
+                "category": "Mua sắm",
+                "description": "Mua đồ dùng văn phòng"
+            },
+            {
+                "date": "2025-03-25",
+                "amount": 290000.0,
+                "category": "Giải trí",
+                "description": "Cà phê"
+            },
+            {
+                "date": "2025-03-26",
+                "amount": 130000.0,
+                "category": "Ăn uống",
+                "description": "Ăn sáng"
+            },
+            {
+                "date": "2025-03-27",
+                "amount": 230000.0,
+                "category": "Di chuyển",
+                "description": "Taxi"
+            },
+            {
+                "date": "2025-03-28",
+                "amount": 360000.0,
+                "category": "Mua sắm",
+                "description": "Mua đồ điện tử"
+            },
+            {
+                "date": "2025-03-29",
+                "amount": 270000.0,
+                "category": "Giải trí",
+                "description": "Karaoke"
+            },
+            {
+                "date": "2025-03-30",
+                "amount": 190000.0,
+                "category": "Ăn uống",
+                "description": "Ăn tối"
+            },
+            {
+                "date": "2025-03-31",
+                "amount": 240000.0,
+                "category": "Di chuyển",
+                "description": "Grab"
+            },
+            {
+                "date": "2025-04-02",
+                "amount": 410000.0,
+                "category": "Mua sắm",
+                "description": "Mua quần áo"
+            },
+            {
+                "date": "2025-04-03",
+                "amount": 310000.0,
+                "category": "Giải trí",
+                "description": "Bowling"
+            },
+            {
+                "date": "2025-04-04",
+                "amount": 140000.0,
+                "category": "Không xác định",
+                "description": "Mua đồ dùng cá nhân"
+            },
+            {
+                "date": "2025-06-07",
+                "amount": 140000.0,
+                "category": "Không xác định",
+                "description": "Mua đồ dùng cá nhân"
+            },
+            {
+                "date": "2025-06-08",
+                "amount": 1.0,
+                "category": "Di chuyển",
+                "description": "1"
+            },
+            {
+                "date": "2025-06-09",
+                "amount": 450000.0,
+                "category": "Mua sắm",
+                "description": "Mua quà sinh nhật"
+            },
+            {
+                "date": "2025-06-09",
+                "amount": 380000.0,
+                "category": "Mua sắm",
+                "description": "Mua đồ thể thao"
+            },
+            {
+                "date": "2025-06-09",
+                "amount": 380000.0,
+                "category": "Mua sắm",
+                "description": "Mua đồ thể thao"
+            },
+            {
+                "date": "2025-06-09",
+                "amount": 260000.0,
+                "category": "Giải trí",
+                "description": "Xem phim"
+            },
+            {
+                "date": "2025-06-09",
+                "amount": 380000.0,
+                "category": "Mua sắm",
+                "description": "Mua đồ thể thao"
+            },
+            {
+                "date": "2025-06-09",
+                "amount": 380000.0,
+                "category": "Mua sắm",
+                "description": "Mua đồ thể thao"
+            },
+            {
+                "date": "2025-06-09",
+                "amount": 420000.0,
+                "category": "Mua sắm",
+                "description": "Mua đồ dùng văn phòng"
+            },
+            {
+                "date": "2025-06-09",
+                "amount": 380000.0,
+                "category": "Mua sắm",
+                "description": "Mua đồ thể thao"
+            }
+        ]
+    },
+    "categories": {
+        "income": [
+            "Lương",
+            "Thưởng",
+            "Đầu tư",
+            "Khác"
+        ],
+        "expense": [
+            "Ăn uống",
+            "Di chuyển",
+            "Mua sắm",
+            "Giải trí",
+            "Khác"
+        ]
+    },
+    "settings": {
+        "currency": "VND",
+        "language": "vi",
+        "theme": "light",
+        "auto_backup": true,
+        "backup_interval": 24,
+        "last_backup": "20250608_144511",
+        "notify_expense": true,
+        "notify_budget": true,
+        "budget_limit": 2000000000.0
+    },
+    "goals": [
+        {
+            "title": "Mua xe máy mới",
+            "amount": 50000000,
+            "saved": 15000000,
+            "deadline": "31/12/2025",
+            "completed": false
+        },
+        {
+            "title": "Du lịch Đà Nẵng",
+            "amount": 15000000,
+            "saved": 5000000,
+            "deadline": "30/06/2025",
+            "completed": false
+        },
+        {
+            "title": "Mua laptop mới",
+            "amount": 25000000,
+            "saved": 8000000,
+            "deadline": "31/08/2025",
+            "completed": false
+        },
+        {
+            "title": "Học phí khóa học lập trình",
+            "amount": 8000000,
+            "saved": 3000000,
+            "deadline": "15/05/2025",
+            "completed": true
+        },
+        {
+            "title": "Mua điện thoại mới",
+            "amount": 12000000,
+            "saved": 4000000,
+            "deadline": "30/09/2025",
+            "completed": false
+        },
+        {
+            "title": "Sửa nhà",
+            "amount": 30000000,
+            "saved": 10000000,
+            "deadline": "31/10/2025",
+            "completed": false
+        },
+        {
+            "title": "Du lịch nước ngoài",
+            "amount": 30000000,
+            "saved": 5000000,
+            "deadline": "31/12/2026",
+            "completed": false
+        },
+        {
+            "title": "Mua đồng hồ thông minh",
+            "amount": 5000000,
+            "saved": 2000000,
+            "deadline": "30/07/2025",
+            "completed": false
+        },
+        {
+            "title": "Mua xe máy mới",
+            "amount": 35000000,
+            "saved": 15000000,
+            "deadline": "31/12/2025",
+            "completed": false
+        },
+        {
+            "title": "Đầu tư chứng khoán",
+            "amount": 20000000,
+            "saved": 8000000,
+            "deadline": "30/01/2025",
+            "completed": true
+        },
+        {
+            "title": "Học tiếng Anh",
+            "amount": 12000000,
+            "saved": 5000000,
+            "deadline": "31/08/2025",
+            "completed": false
+        }
+    ],
+    "reminders": []
+}
