@@ -44,6 +44,11 @@ class XuLyDuLieu:
 
             database_exists = os.path.exists(self.db_file)
 
+            if not database_exists:
+                # Tạo dữ liệu mẫu nếu file không tồn tại
+                self._initialize_default_data()
+                database_exists = True
+
             if database_exists:
                 with open(self.db_file, 'r', encoding='utf-8') as f:
                     data = json.load(f)
@@ -595,24 +600,285 @@ class XuLyDuLieu:
             return []
 
     def _initialize_default_data(self):
-        self.app.transactions = []
-        self.app.categories = {
-            'income': ['Lương', 'Thưởng', 'Đầu tư', 'Khác'],
-            'expense': ['Ăn uống', 'Di chuyển', 'Mua sắm', 'Giải trí', 'Khác']
+        """Khởi tạo dữ liệu mẫu khi tạo file database mới"""
+        # Dữ liệu mẫu cho giao dịch
+        sample_transactions = {
+            "income": [
+                {
+                    "date": "2025-03-01",
+                    "amount": 7500000.0,
+                    "category": "Lương",
+                    "description": "Lương tháng 3"
+                },
+                {
+                    "date": "2025-03-15",
+                    "amount": 1500000.0,
+                    "category": "Thưởng",
+                    "description": "Thưởng dự án"
+                },
+                {
+                    "date": "2025-03-20",
+                    "amount": 1200000.0,
+                    "category": "Đầu tư",
+                    "description": "Lãi cổ phiếu"
+                },
+                {
+                    "date": "2025-03-25",
+                    "amount": 400000.0,
+                    "category": "Khác",
+                    "description": "Tiền thưởng từ khảo sát"
+                },
+                {
+                    "date": "2025-04-01",
+                    "amount": 8000000.0,
+                    "category": "Lương",
+                    "description": "Lương tháng 4"
+                },
+                {
+                    "date": "2025-04-15",
+                    "amount": 1800000.0,
+                    "category": "Thưởng",
+                    "description": "Thưởng doanh số"
+                }
+            ],
+            "expenses": [
+                {
+                    "date": "2025-03-02",
+                    "amount": 150000.0,
+                    "category": "Ăn uống",
+                    "description": "Ăn trưa văn phòng"
+                },
+                {
+                    "date": "2025-03-03",
+                    "amount": 200000.0,
+                    "category": "Di chuyển",
+                    "description": "Tiền xăng xe"
+                },
+                {
+                    "date": "2025-03-04",
+                    "amount": 300000.0,
+                    "category": "Mua sắm",
+                    "description": "Mua quần áo"
+                },
+                {
+                    "date": "2025-03-05",
+                    "amount": 250000.0,
+                    "category": "Giải trí",
+                    "description": "Xem phim"
+                },
+                {
+                    "date": "2025-03-06",
+                    "amount": 180000.0,
+                    "category": "Ăn uống",
+                    "description": "Ăn tối nhà hàng"
+                },
+                {
+                    "date": "2025-03-07",
+                    "amount": 150000.0,
+                    "category": "Di chuyển",
+                    "description": "Grab đi làm"
+                },
+                {
+                    "date": "2025-03-08",
+                    "amount": 400000.0,
+                    "category": "Mua sắm",
+                    "description": "Mua đồ điện tử"
+                },
+                {
+                    "date": "2025-03-09",
+                    "amount": 200000.0,
+                    "category": "Giải trí",
+                    "description": "Cà phê với bạn"
+                },
+                {
+                    "date": "2025-03-10",
+                    "amount": 120000.0,
+                    "category": "Ăn uống",
+                    "description": "Ăn sáng"
+                },
+                {
+                    "date": "2025-03-11",
+                    "amount": 180000.0,
+                    "category": "Di chuyển",
+                    "description": "Taxi đi họp"
+                },
+                {
+                    "date": "2025-03-12",
+                    "amount": 350000.0,
+                    "category": "Mua sắm",
+                    "description": "Mua đồ gia dụng"
+                },
+                {
+                    "date": "2025-03-13",
+                    "amount": 280000.0,
+                    "category": "Giải trí",
+                    "description": "Karaoke"
+                },
+                {
+                    "date": "2025-03-14",
+                    "amount": 160000.0,
+                    "category": "Ăn uống",
+                    "description": "Ăn trưa"
+                },
+                {
+                    "date": "2025-03-15",
+                    "amount": 220000.0,
+                    "category": "Di chuyển",
+                    "description": "Xăng xe"
+                },
+                {
+                    "date": "2025-03-16",
+                    "amount": 450000.0,
+                    "category": "Mua sắm",
+                    "description": "Mua quà sinh nhật"
+                }
+            ]
         }
-        self.app.settings = {
-            'currency': 'VND',
-            'language': 'vi',
-            'theme': 'light',
-            'auto_backup': True,
-            'backup_interval': 24,
-            'last_backup': None,
-            'notify_expense': True,
-            'notify_budget': True,
-            'budget_limit': 10000000
+
+        # Dữ liệu mẫu cho danh mục
+        sample_categories = {
+            "income": [
+                "Lương",
+                "Thưởng",
+                "Đầu tư",
+                "Kinh doanh",
+                "Cho thuê",
+                "Lãi tiết kiệm",
+                "Khác"
+            ],
+            "expense": [
+                "Ăn uống",
+                "Di chuyển",
+                "Mua sắm",
+                "Giải trí",
+                "Nhà cửa",
+                "Y tế",
+                "Giáo dục",
+                "Điện nước",
+                "Internet",
+                "Điện thoại",
+                "Bảo hiểm",
+                "Khác"
+            ]
         }
-        self.app.goals = []
-        self.app.reminders = []
+
+        # Dữ liệu mẫu cho cài đặt
+        sample_settings = {
+            "currency": "VND",
+            "language": "vi",
+            "theme": "light",
+            "auto_backup": True,
+            "backup_interval": 24,
+            "last_backup": None,
+            "notify_expense": True,
+            "notify_budget": True,
+            "budget_limit": 20000000.0,
+            "categories": sample_categories,
+            "default_income_categories": sample_categories["income"],
+            "default_expense_categories": sample_categories["expense"]
+        }
+
+        # Dữ liệu mẫu cho mục tiêu
+        sample_goals = [
+            {
+                "title": "Mua xe máy mới",
+                "amount": 50000000,
+                "saved": 15000000,
+                "deadline": "31/12/2025",
+                "completed": False,
+                "description": "Mua xe máy mới để đi làm"
+            },
+            {
+                "title": "Du lịch Đà Nẵng",
+                "amount": 15000000,
+                "saved": 5000000,
+                "deadline": "30/06/2025",
+                "completed": False,
+                "description": "Du lịch Đà Nẵng 5 ngày 4 đêm"
+            },
+            {
+                "title": "Mua laptop mới",
+                "amount": 25000000,
+                "saved": 8000000,
+                "deadline": "31/08/2025",
+                "completed": False,
+                "description": "Mua laptop cho công việc"
+            },
+            {
+                "title": "Học phí khóa học lập trình",
+                "amount": 8000000,
+                "saved": 3000000,
+                "deadline": "15/05/2025",
+                "completed": False,
+                "description": "Học phí khóa học Python"
+            },
+            {
+                "title": "Mua điện thoại mới",
+                "amount": 12000000,
+                "saved": 4000000,
+                "deadline": "30/09/2025",
+                "completed": False,
+                "description": "Mua điện thoại mới"
+            }
+        ]
+
+        # Dữ liệu mẫu cho nhắc nhở
+        current_date = datetime.now()
+        sample_reminders = [
+            {
+                "id": 1,
+                "title": "Chào mừng bạn đến với ứng dụng!",
+                "content": "Hãy thêm nhắc nhở đầu tiên của bạn.",
+                "date": current_date.strftime("%Y-%m-%d"),
+                "time": current_date.strftime("%H:%M"),
+                "datetime": current_date.strftime("%Y-%m-%d %H:%M"),
+                "notified": False
+            },
+            {
+                "id": 2,
+                "title": "Nhắc nhở thanh toán hóa đơn",
+                "content": "Đừng quên thanh toán hóa đơn điện nước tháng này",
+                "date": (current_date + timedelta(days=2)).strftime("%Y-%m-%d"),
+                "time": "09:00",
+                "datetime": (current_date + timedelta(days=2)).strftime("%Y-%m-%d 09:00"),
+                "notified": False
+            },
+            {
+                "id": 3,
+                "title": "Nhắc nhở sinh nhật",
+                "content": "Sinh nhật của bạn sắp đến, hãy chuẩn bị kế hoạch!",
+                "date": (current_date + timedelta(days=5)).strftime("%Y-%m-%d"),
+                "time": "08:00",
+                "datetime": (current_date + timedelta(days=5)).strftime("%Y-%m-%d 08:00"),
+                "notified": False
+            },
+            {
+                "id": 4,
+                "title": "Nhắc nhở tiết kiệm",
+                "content": "Đã đến kỳ gửi tiết kiệm định kỳ",
+                "date": (current_date + timedelta(days=7)).strftime("%Y-%m-%d"),
+                "time": "10:00",
+                "datetime": (current_date + timedelta(days=7)).strftime("%Y-%m-%d 10:00"),
+                "notified": False
+            }
+        ]
+
+        # Tạo dữ liệu mẫu
+        sample_data = {
+            "transactions": sample_transactions,
+            "categories": sample_categories,
+            "settings": sample_settings,
+            "goals": sample_goals,
+            "reminders": sample_reminders
+        }
+
+        # Lưu dữ liệu mẫu vào file
+        try:
+            with open(self.db_file, 'w', encoding='utf-8') as f:
+                json.dump(sample_data, f, ensure_ascii=False, indent=4)
+            print("Đã tạo dữ liệu mẫu thành công!")
+        except Exception as e:
+            print(f"Lỗi khi tạo dữ liệu mẫu: {str(e)}")
 
     def generate_dummy_transactions(self, num_transactions=100):
         start_date = datetime.now() - timedelta(days=365) # Giao dịch trong vòng 1 năm qua

@@ -4,6 +4,7 @@ import importlib
 import tkinter as tk
 import customtkinter as ctk
 from tkinter import messagebox
+import subprocess
 
 def check_dependencies():
     required_packages = {
@@ -15,7 +16,17 @@ def check_dependencies():
         'darkdetect': 'darkdetect',
         'pillow': 'PIL',
         'openpyxl': 'openpyxl',
-        'cryptography': 'cryptography'
+        'cryptography': 'cryptography',
+        'tkcalendar': 'tkcalendar',
+        'seaborn': 'seaborn',
+        'reportlab': 'reportlab',
+        'scikit-learn': 'sklearn',
+        'google-generativeai': 'google.generativeai',
+        'requests': 'requests',
+        'python-dateutil': 'dateutil',
+        'unidecode': 'unidecode',
+        'secure-smtplib': 'secure_smtplib',
+        'python-dotenv': 'dotenv'
     }
     
     missing_packages = []
@@ -27,12 +38,14 @@ def check_dependencies():
             missing_packages.append(package)
     
     if missing_packages:
-        print("Thiếu các package sau:")
-        for package in missing_packages:
-            print(f"- {package}")
-        print("\nCài đặt bằng lệnh:")
-        print(f"pip install {' '.join(missing_packages)}")
-        return False
+        print("Đang cài đặt các package còn thiếu...")
+        try:
+            subprocess.check_call([sys.executable, "-m", "pip", "install"] + missing_packages)
+            print("Đã cài đặt thành công các package còn thiếu!")
+            return True
+        except subprocess.CalledProcessError as e:
+            print(f"Lỗi khi cài đặt packages: {str(e)}")
+            return False
     return True
 
 def check_files():
@@ -50,15 +63,19 @@ def check_files():
     ]
     
     missing_files = []
+    current_dir = os.path.dirname(os.path.abspath(__file__))
     
     for file in required_files:
-        if not os.path.exists(file):
+        file_path = os.path.join(current_dir, file)
+        if not os.path.exists(file_path):
             missing_files.append(file)
+            print(f"Không tìm thấy file: {file_path}")
     
     if missing_files:
-        print("Thiếu các file sau:")
+        print("\nDanh sách các file còn thiếu:")
         for file in missing_files:
             print(f"- {file}")
+        print("\nVui lòng đảm bảo tất cả các file trên đều tồn tại trong thư mục chương trình.")
         return False
     return True
 
