@@ -362,7 +362,7 @@
         "theme": "light",
         "auto_backup": true,
         "backup_interval": 24,
-        "last_backup": "20250608_144511",
+        "last_backup": "20250609_151016",
         "notify_expense": true,
         "notify_budget": true,
         "budget_limit": 2000000000.0
