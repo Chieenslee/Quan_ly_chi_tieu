@@ -162,7 +162,7 @@
         "theme": "light",
         "auto_backup": true,
         "backup_interval": 24,
-        "last_backup": "20250609_173715",
+        "last_backup": "20250615_145855",
         "notify_expense": true,
         "notify_budget": true,
         "budget_limit": 20000000.0,
@@ -274,7 +274,7 @@
             "date": "2025-06-11",
             "time": "09:00",
             "datetime": "2025-06-11 09:00",
-            "notified": false
+            "notified": true
         },
         {
             "id": 3,
@@ -283,7 +283,7 @@
             "date": "2025-06-14",
             "time": "08:00",
             "datetime": "2025-06-14 08:00",
-            "notified": false
+            "notified": true
         },
         {
             "id": 4,

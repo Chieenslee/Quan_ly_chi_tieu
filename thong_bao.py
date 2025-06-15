@@ -167,47 +167,49 @@ class ThongBao:
                 time.sleep(60)
 
     def kiem_tra_capnhat(self):
-        repo_owner = "Chieenslee"
-        repo_name = "Quan_ly_chi_tieu"
-        release_api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/releases/latest"
+        # repo_owner = "Chieenslee"
+        # repo_name = "Quan_ly_chi_tieu"
+        # release_api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/releases/latest"
         
-        current_version_str = "1.0.0" # Phiên bản hiện tại của ứng dụng
-        current_version_tuple = self._parse_version(current_version_str)
+        # current_version_str = "1.0.0" # Phiên bản hiện tại của ứng dụng
+        # current_version_tuple = self._parse_version(current_version_str)
 
-        try:
-            response = requests.get(release_api_url, timeout=10) # Thêm timeout
-            response.raise_for_status() # Báo lỗi cho các phản hồi HTTP xấu (4xx hoặc 5xx)
+        # try:
+        #     response = requests.get(release_api_url, timeout=10) # Thêm timeout
+        #     response.raise_for_status() # Báo lỗi cho các phản hồi HTTP xấu (4xx hoặc 5xx)
             
-            latest_release = response.json()
+        #     latest_release = response.json()
             
-            if not latest_release: # Nếu phản hồi trống, có thể không có bản phát hành nào
-                messagebox.showinfo("Cập nhật", "Không tìm thấy phiên bản mới. Kho lưu trữ có thể trống hoặc không có bản phát hành nào.")
-                return
+        #     if not latest_release: # Nếu phản hồi trống, có thể không có bản phát hành nào
+        #         messagebox.showinfo("Cập nhật", "Không tìm thấy phiên bản mới. Kho lưu trữ có thể trống hoặc không có bản phát hành nào.")
+        #         return
 
-            latest_version_str = latest_release.get("tag_name")
-            if not latest_version_str:
-                messagebox.showinfo("Cập nhật", "Không tìm thấy thông tin phiên bản mới nhất từ kho lưu trữ.")
-                return
+        #     latest_version_str = latest_release.get("tag_name")
+        #     if not latest_version_str:
+        #         messagebox.showinfo("Cập nhật", "Không tìm thấy thông tin phiên bản mới nhất từ kho lưu trữ.")
+        #         return
 
-            latest_version_tuple = self._parse_version(latest_version_str)
-            download_url = latest_release.get("html_url")
+        #     latest_version_tuple = self._parse_version(latest_version_str)
+        #     download_url = latest_release.get("html_url")
 
-            if latest_version_tuple > current_version_tuple:
-                if messagebox.askyesno("Cập nhật", 
-                    f"Đã có phiên bản mới {latest_version_str}. Bạn có muốn cập nhật không?"):
-                    if download_url:
-                        webbrowser.open(download_url)
-                    else:
-                        messagebox.showerror("Lỗi", "Không tìm thấy liên kết tải xuống cho phiên bản mới.")
-            else:
-                messagebox.showinfo("Cập nhật", f"Bạn đang sử dụng phiên bản mới nhất ({current_version_str}).")
+        #     if latest_version_tuple > current_version_tuple:
+        #         if messagebox.askyesno("Cập nhật", 
+        #             f"Đã có phiên bản mới {latest_version_str}. Bạn có muốn cập nhật không?"):
+        #             if download_url:
+        #                 webbrowser.open(download_url)
+        #             else:
+        #                 messagebox.showerror("Lỗi", "Không tìm thấy liên kết tải xuống cho phiên bản mới.")
+        #     else:
+        #         messagebox.showinfo("Cập nhật", f"Bạn đang sử dụng phiên bản mới nhất ({current_version_str}).")
                 
-        except requests.exceptions.RequestException as req_e:
-            messagebox.showerror("Lỗi", f"Không thể kết nối đến máy chủ GitHub để kiểm tra cập nhật: {req_e}")
-        except json.JSONDecodeError:
-            messagebox.showerror("Lỗi", "Không thể đọc thông tin cập nhật từ phản hồi máy chủ.")
-        except Exception as e:
-            messagebox.showerror("Lỗi", f"Đã xảy ra lỗi khi kiểm tra cập nhật: {str(e)}")
+        # except requests.exceptions.RequestException as req_e:
+        #     messagebox.showerror("Lỗi", f"Không thể kết nối đến máy chủ GitHub để kiểm tra cập nhật: {req_e}")
+        # except json.JSONDecodeError:
+        #     messagebox.showerror("Lỗi", "Không thể đọc thông tin cập nhật từ phản hồi máy chủ.")
+        # except Exception as e:
+        #     messagebox.showerror("Lỗi", f"Đã xảy ra lỗi khi kiểm tra cập nhật: {str(e)}")
+
+        messagebox.showinfo("Phiên bản hiện tại 1.0.0", "Phiên bản mới nhất!")
 
     def _parse_version(self, version_str):
         # Helper để phân tích chuỗi phiên bản (ví dụ: "v1.2.3" hoặc "1.2.3") thành tuple có thể so sánh (1, 2, 3)
@@ -222,51 +224,65 @@ class ThongBao:
         # Tạo cửa sổ báo lỗi
         window = ctk.CTkToplevel(self.app.root)
         window.title("Báo lỗi")
-        window.geometry("500x400")
+        window.geometry("600x550") # Increased window size
         window.transient(self.app.root)
         window.grab_set()
         window.focus_force()
-        
+
+        # Configure grid layout
+        window.grid_columnconfigure(0, weight=1)
+        window.grid_rowconfigure(5, weight=1) # Make description_text expandable
+
         # Tạo các trường nhập liệu
-        ctk.CTkLabel(window, text="Tiêu đề:").pack(pady=5)
+        ctk.CTkLabel(window, text="Tiêu đề:").grid(row=0, column=0, pady=5, sticky="w", padx=10)
         title_entry = ctk.CTkEntry(window)
-        title_entry.pack(pady=5)
-        
-        ctk.CTkLabel(window, text="Mô tả lỗi:").pack(pady=5)
-        description_text = ctk.CTkTextbox(window, height=100)
-        description_text.pack(pady=5, fill="x", padx=10)
-        
-        ctk.CTkLabel(window, text="Các bước tái hiện lỗi:").pack(pady=5)
-        steps_text = ctk.CTkTextbox(window, height=100)
-        steps_text.pack(pady=5, fill="x", padx=10)
-        
+        title_entry.grid(row=1, column=0, pady=5, padx=10, sticky="ew")
+
+        ctk.CTkLabel(window, text="Email của bạn:").grid(row=2, column=0, pady=5, sticky="w", padx=10)
+        sender_email_entry = ctk.CTkEntry(window)
+        sender_email_entry.grid(row=3, column=0, pady=5, padx=10, sticky="ew")
+
+        ctk.CTkLabel(window, text="Mật khẩu email:").grid(row=4, column=0, pady=5, sticky="w", padx=10)
+        sender_password_entry = ctk.CTkEntry(window, show="*") # Use show="*" for password masking
+        sender_password_entry.grid(row=5, column=0, pady=5, padx=10, sticky="ew")
+
+        ctk.CTkLabel(window, text="Mô tả lỗi:").grid(row=6, column=0, pady=5, sticky="w", padx=10)
+        description_text = ctk.CTkTextbox(window, height=150) # Increased height
+        description_text.grid(row=7, column=0, pady=5, padx=10, sticky="nsew")
+
+        ctk.CTkLabel(window, text="Các bước tái hiện lỗi:").grid(row=8, column=0, pady=5, sticky="w", padx=10)
+        steps_text = ctk.CTkTextbox(window, height=150) # Increased height
+        steps_text.grid(row=9, column=0, pady=5, padx=10, sticky="nsew")
+
         # Tạo nút gửi
         def send_error_report():
             try:
                 title = title_entry.get()
+                sender_email = sender_email_entry.get()
+                sender_password = sender_password_entry.get()
                 description = description_text.get("1.0", "end-1c")
                 steps = steps_text.get("1.0", "end-1c")
-                
+
                 # Kiểm tra dữ liệu
-                if not title or not description:
-                    messagebox.showerror("Lỗi", "Vui lòng điền đầy đủ thông tin")
+                if not title or not description or not sender_email or not sender_password:
+                    messagebox.showerror("Lỗi", "Vui lòng điền đầy đủ thông tin, bao gồm Email và Mật khẩu của bạn.")
                     return
-                
+
                 # Gửi báo lỗi
-                self.gui_baoloi(window, title, description, steps)
-                
+                self.gui_baoloi(window, title, description, steps, sender_email, sender_password)
+
             except Exception as e:
                 messagebox.showerror("Lỗi", f"Không thể gửi báo lỗi: {str(e)}")
-        
-        ctk.CTkButton(window, text="Gửi báo lỗi", command=send_error_report).pack(pady=20)
 
-    def gui_baoloi(self, window, title, description, steps):
+        ctk.CTkButton(window, text="Gửi báo lỗi", command=send_error_report).grid(row=10, column=0, pady=20)
+
+    def gui_baoloi(self, window, title, description, steps, sender_email, sender_password):
         try:
             # Tạo nội dung email
             msg = MIMEMultipart()
             msg['Subject'] = f"Báo lỗi: {title}"
-            msg['From'] = "your-email@example.com"
-            msg['To'] = "support@example.com"
+            msg['From'] = sender_email
+            msg['To'] = "lc0949523331@gmail.com"
             
             # Thêm nội dung
             body = f"""
@@ -289,8 +305,7 @@ class ThongBao:
             # Gửi email
             with smtplib.SMTP('smtp.gmail.com', 587) as server:
                 server.starttls()
-                server.login("your-email@gmail.com", "your-password")
-                server.send_message(msg)
+                server.login(sender_email, sender_password)
             
             messagebox.showinfo("Thành công", "Đã gửi báo lỗi thành công")
             window.destroy()
