@@ -2,6 +2,7 @@ import customtkinter as ctk
 import tkinter as tk
 import google.generativeai as genai
 import os
+import re
 
 class Chatbot:
     def __init__(self, root_window):
@@ -46,8 +47,14 @@ class Chatbot:
         self.send_button.pack(side=tk.RIGHT)
 
     def display_message(self, sender, message, emoji):
+        # Loại bỏ ký hiệu Markdown trước khi hiển thị
+        text = message
+        text = re.sub(r"^\*+\s*", "", text, flags=re.MULTILINE)  # Bỏ dấu * ở đầu dòng
+        text = text.replace("**", "")          # Bỏ dấu **
+        text = text.replace("*", "")           # Bỏ dấu * còn sót
+        text = text.replace("- ", "")          # Bỏ dấu - ở đầu dòng
         current_text = self.chat_history_label.cget("text")
-        new_text = f"{current_text}\n{emoji} {sender}: {message}"
+        new_text = f"{current_text}\n{emoji} {sender}: {text}"
         self.chat_history_label.configure(text=new_text)
         self.chat_history_frame._parent_canvas.yview_moveto(1.0) # Scroll to bottom
 

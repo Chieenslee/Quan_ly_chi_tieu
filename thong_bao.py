@@ -224,7 +224,7 @@ class ThongBao:
         # Tạo cửa sổ báo lỗi
         window = ctk.CTkToplevel(self.app.root)
         window.title("Báo lỗi")
-        window.geometry("600x550") # Increased window size
+        window.geometry("600x700") # Increased window size
         window.transient(self.app.root)
         window.grab_set()
         window.focus_force()
@@ -242,73 +242,52 @@ class ThongBao:
         sender_email_entry = ctk.CTkEntry(window)
         sender_email_entry.grid(row=3, column=0, pady=5, padx=10, sticky="ew")
 
-        ctk.CTkLabel(window, text="Mật khẩu email:").grid(row=4, column=0, pady=5, sticky="w", padx=10)
-        sender_password_entry = ctk.CTkEntry(window, show="*") # Use show="*" for password masking
-        sender_password_entry.grid(row=5, column=0, pady=5, padx=10, sticky="ew")
-
-        ctk.CTkLabel(window, text="Mô tả lỗi:").grid(row=6, column=0, pady=5, sticky="w", padx=10)
+        ctk.CTkLabel(window, text="Mô tả lỗi:").grid(row=4, column=0, pady=5, sticky="w", padx=10)
         description_text = ctk.CTkTextbox(window, height=150) # Increased height
-        description_text.grid(row=7, column=0, pady=5, padx=10, sticky="nsew")
+        description_text.grid(row=5, column=0, pady=5, padx=10, sticky="nsew")
 
-        ctk.CTkLabel(window, text="Các bước tái hiện lỗi:").grid(row=8, column=0, pady=5, sticky="w", padx=10)
+        ctk.CTkLabel(window, text="Các bước tái hiện lỗi:").grid(row=6, column=0, pady=5, sticky="w", padx=10)
         steps_text = ctk.CTkTextbox(window, height=150) # Increased height
-        steps_text.grid(row=9, column=0, pady=5, padx=10, sticky="nsew")
+        steps_text.grid(row=7, column=0, pady=5, padx=10, sticky="nsew")
 
         # Tạo nút gửi
         def send_error_report():
             try:
                 title = title_entry.get()
                 sender_email = sender_email_entry.get()
-                sender_password = sender_password_entry.get()
                 description = description_text.get("1.0", "end-1c")
                 steps = steps_text.get("1.0", "end-1c")
 
                 # Kiểm tra dữ liệu
-                if not title or not description or not sender_email or not sender_password:
-                    messagebox.showerror("Lỗi", "Vui lòng điền đầy đủ thông tin, bao gồm Email và Mật khẩu của bạn.")
+                if not title or not description or not sender_email:
+                    messagebox.showerror("Lỗi", "Vui lòng điền đầy đủ thông tin, bao gồm Email của bạn.")
+                    return
+                if '@' not in sender_email:
+                    messagebox.showerror("Lỗi", "Email không hợp lệ. Email phải chứa ký tự '@'.")
                     return
 
                 # Gửi báo lỗi
-                self.gui_baoloi(window, title, description, steps, sender_email, sender_password)
+                self.gui_baoloi(window, title, description, steps, sender_email)
 
             except Exception as e:
                 messagebox.showerror("Lỗi", f"Không thể gửi báo lỗi: {str(e)}")
 
-        ctk.CTkButton(window, text="Gửi báo lỗi", command=send_error_report).grid(row=10, column=0, pady=20)
+        ctk.CTkButton(window, text="Gửi báo lỗi", command=send_error_report).grid(row=8, column=0, pady=20)
 
-    def gui_baoloi(self, window, title, description, steps, sender_email, sender_password):
+    def gui_baoloi(self, window, title, description, steps, sender_email):
         try:
-            # Tạo nội dung email
-            msg = MIMEMultipart()
-            msg['Subject'] = f"Báo lỗi: {title}"
-            msg['From'] = sender_email
-            msg['To'] = "lc0949523331@gmail.com"
-            
-            # Thêm nội dung
-            body = f"""
-            Tiêu đề: {title}
-            
-            Mô tả lỗi:
-            {description}
-            
-            Các bước tái hiện lỗi:
-            {steps}
-            
-            Thông tin hệ thống:
-            - Phiên bản: 1.0.0
-            - Hệ điều hành: {os.name}
-            - Python: {sys.version}
-            """
-            
-            msg.attach(MIMEText(body, 'plain'))
-            
-            # Gửi email
-            with smtplib.SMTP('smtp.gmail.com', 587) as server:
-                server.starttls()
-                server.login(sender_email, sender_password)
-            
-            messagebox.showinfo("Thành công", "Đã gửi báo lỗi thành công")
-            window.destroy()
-            
+            url = "https://docs.google.com/forms/d/e/1FAIpQLSeBrhZBReMzWBopzPAroXA8aSy49fyBBHyuMcpB3FS2MReGbw/formResponse"
+            data = {
+                "entry.1424583701": title,         # Tiêu đề lỗi
+                "entry.1071194874": sender_email,  # Email
+                "entry.459534460": description,    # Mô tả lỗi
+                "entry.147043057": steps           # Các bước tái hiện
+            }
+            response = requests.post(url, data=data)
+            if response.status_code == 200 or response.status_code == 302:
+                messagebox.showinfo("Thành công", "Đã gửi báo lỗi thành công!")
+                window.destroy()
+            else:
+                messagebox.showerror("Lỗi", "Không thể gửi báo lỗi.")
         except Exception as e:
             messagebox.showerror("Lỗi", f"Không thể gửi báo lỗi: {str(e)}") 

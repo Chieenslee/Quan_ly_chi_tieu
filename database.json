@@ -32,7 +32,13 @@
                 "description": "Lương tháng 4"
             },
             {
-                "date": "2025-04-15",
+                "date": "2025-06-16",
+                "amount": 1800000.0,
+                "category": "Thưởng",
+                "description": "Thưởng doanh số"
+            },
+            {
+                "date": "2025-06-16",
                 "amount": 1800000.0,
                 "category": "Thưởng",
                 "description": "Thưởng doanh số"
@@ -68,12 +74,6 @@
                 "amount": 180000.0,
                 "category": "Ăn uống",
                 "description": "Ăn tối nhà hàng"
-            },
-            {
-                "date": "2025-03-07",
-                "amount": 150000.0,
-                "category": "Di chuyển",
-                "description": "Grab đi làm"
             },
             {
                 "date": "2025-03-08",
@@ -118,16 +118,28 @@
                 "description": "Ăn trưa"
             },
             {
-                "date": "2025-03-15",
-                "amount": 220000.0,
-                "category": "Di chuyển",
-                "description": "Xăng xe"
-            },
-            {
                 "date": "2025-03-16",
                 "amount": 450000.0,
                 "category": "Mua sắm",
                 "description": "Mua quà sinh nhật"
+            },
+            {
+                "date": "2025-06-16",
+                "amount": 250000.0,
+                "category": "Giải trí",
+                "description": "Xem phim"
+            },
+            {
+                "date": "2025-06-16",
+                "amount": 180000.0,
+                "category": "Di chuyển",
+                "description": "Taxi đi họp"
+            },
+            {
+                "date": "2025-06-16",
+                "amount": 220000.0,
+                "category": "Di chuyển",
+                "description": "Xăng xe"
             }
         ]
     },
@@ -162,7 +174,7 @@
         "theme": "light",
         "auto_backup": true,
         "backup_interval": 24,
-        "last_backup": "20250615_145855",
+        "last_backup": "20250616_185117",
         "notify_expense": true,
         "notify_budget": true,
         "budget_limit": 20000000.0,
@@ -292,7 +304,7 @@
             "date": "2025-06-16",
             "time": "10:00",
             "datetime": "2025-06-16 10:00",
-            "notified": false
+            "notified": true
         }
     ]
 }

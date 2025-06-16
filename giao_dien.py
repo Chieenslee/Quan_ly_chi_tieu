@@ -512,9 +512,14 @@ class GiaoDien:
         reminder_frame.pack(fill=tk.X, padx=5, pady=5)
         
         ctk.CTkLabel(reminder_frame, text="Nhắc nhở:", font=("Arial", 16, "bold")).pack()
-        self.reminder_list = ctk.CTkTextbox(reminder_frame, height=150, font=("Arial", 12))
-        self.reminder_list.pack(fill=tk.X, padx=5, pady=5)
         
+        self.reminder_list = tk.Text(reminder_frame, height=8, font=("Arial", 12), wrap="none")
+        self.reminder_list.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
+        # Thanh cuộn ngang
+        scrollbar_x = tk.Scrollbar(reminder_frame, orient="horizontal", command=self.reminder_list.xview)
+        scrollbar_x.pack(side=tk.BOTTOM, fill=tk.X)
+        self.reminder_list.configure(xscrollcommand=scrollbar_x.set)
+
         # Frame thống kê
         stats_frame = ctk.CTkFrame(parent)
         stats_frame.pack(fill=tk.X, padx=5, pady=5)
@@ -534,10 +539,12 @@ class GiaoDien:
     def update_reminders(self):
         try:
             self.reminder_list.delete("1.0", tk.END)
-            
-            # Add existing reminders
-            for reminder in self.app.reminders:
-                # Display all reminders regardless of notified status
+            # Sắp xếp nhắc nhở theo thời gian (tăng dần)
+            sorted_reminders = sorted(
+                self.app.reminders,
+                key=lambda r: datetime.strptime(r.get('datetime', '2099-12-31 23:59'), "%Y-%m-%d %H:%M"),
+            )
+            for reminder in sorted_reminders:
                 self.reminder_list.insert(tk.END, f"• {reminder.get('title', '')} - {reminder.get('content', '')} ({reminder.get('datetime', '')})\n")
 
             current_date = datetime.now()
